@@ -6,3 +6,8 @@ ROBLOX API in Golang
 
 ### Assets
 - GetProductInfo
+
+### Authentication
+- Login
+- Logout
+- GetCSRFToken
