@@ -50,6 +50,7 @@ func (ref *Asset) SetRequestType(req protocolEnum) {
 	Asset Method Implementation
 */
 
+// GetProductInfo : API call to Marketplace/ProductInfo
 func (ref *Asset) GetProductInfo() (map[string]interface{}, error) {
 	if ref.requestType == GETREQUEST {
 		res, err := http.Get("http://api.roblox.com/marketplace/productinfo?assetId=" + strconv.Itoa(ref.id))

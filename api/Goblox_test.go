@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// Test_SetEnum : Set protocolEnums, and check their values
 func Test_SetEnum(test *testing.T) {
 	log.Println("> Running Test: SetEnum")
 	e := GETREQUEST
@@ -18,6 +19,7 @@ func Test_SetEnum(test *testing.T) {
 	}
 }
 
+// Test_GetProductInfo : Test API calls to retrieve product information
 func Test_GetProductInfo(test *testing.T) {
 	log.Println("> Running Test: GetProductInfo")
 	asset := Asset{}
