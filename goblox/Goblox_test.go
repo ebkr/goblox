@@ -22,10 +22,25 @@ func Test_SetEnum(test *testing.T) {
 // Test_GetProductInfo : Test API calls to retrieve product information
 func Test_GetProductInfo(test *testing.T) {
 	log.Println("> Running Test: GetProductInfo")
-	asset := Asset{}
-	asset.SetID(1584277735)
+	asset := Marketplace{}
+	asset.SetData(map[string]string{"assetId": "1584277735"})
 	asset.requestType = GETREQUEST
 	response, err := asset.GetProductInfo()
+	if err != nil {
+		test.Errorf(err.Error())
+	}
+	if reflect.TypeOf(response["AssetId"]) != reflect.TypeOf(float64(0)) {
+		test.Errorf("Wrong format")
+	}
+}
+
+// Test_GetGamePassProductInfo : Test API calls to retrieve product information
+func Test_GetGamePassProductInfo(test *testing.T) {
+	log.Println("> Running Test: GetGamePassProductInfo")
+	pass := Marketplace{}
+	pass.SetData(map[string]string{"assetId": "1584277735"})
+	pass.requestType = GETREQUEST
+	response, err := pass.GetProductInfo()
 	if err != nil {
 		test.Errorf(err.Error())
 	}

@@ -2,6 +2,7 @@ package goblox
 
 import (
 	"bytes"
+	"errors"
 	"log"
 	"net/http"
 )
@@ -39,6 +40,8 @@ func (ref *Authentication) Login() (bool, error) {
 		if json["errors"] == nil {
 			if json["user"] != nil && json["user"].(map[string]interface{})["id"] != nil {
 				return true, err
+			} else {
+				return false, errors.New("Could not find user field, or user > id field")
 			}
 		}
 		res.Body.Close()
@@ -81,4 +84,9 @@ func (ref *Authentication) Logout() error {
 // GetCSRFToken : Return the X-CSRF-TOKEN associated with the login
 func (ref *Authentication) GetCSRFToken() string {
 	return ref.token
+}
+
+// SetCSRFToken : Return the X-CSRF-TOKEN associated with the login
+func (ref *Authentication) SetCSRFToken(token string) {
+	ref.token = token
 }
